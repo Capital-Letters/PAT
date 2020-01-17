@@ -1,41 +1,42 @@
 #include <bits/stdc++.h>
 using namespace std;
+int cmp(const void *a,const void *b)
+{
+    return *(int *)a-*(int *)b;
+}
 int main()
 {
-    int max=0;
-    int min=1000000000;
-    int count=0;
     int n;
     cin >> n;
     int A[n];
+    int B[n];
+    int V[n];
     for (int i = 0; i < n; i++)
     {
         cin >> A[i];
+        B[i]=A[i];
     }
+    qsort(B,n,sizeof(B[0]),cmp);
+    int max=0,count=0;
     for (int i = 0; i < n; i++)
     {
-        int flag=1;
-        for (int j = 0 , k=n-1 ; j<i||k>i; )
+        if(A[i]==B[i]&&A[i]>max)
         {
-            if(j>i&&A[j]>A[i])
-            {
-                flag=0;
-                break;
-            }
-            if(k<i&&A[k]<A[i])
-            {
-                flag=0;
-                break;
-            }
-            j++;
-            k--;
+            V[count++]=A[i];
         }
-        if(flag)
+        if(A[i]>max)
         {
-            count++;
-            cout << A[i];
+            max=A[i];
         }
     }
+    cout << count << endl;
+    for (int i = 0; i < count; i++)
+    {
+        if(i!=0) cout << " ";
+        cout << V[i];
+    }
+    cout << endl;
+    
     
     
 }
