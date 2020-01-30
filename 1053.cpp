@@ -2,33 +2,29 @@
 using namespace std;
 int main()
 {
-    int N;
+    int n,d;
     double e;
-    int D;
-    int n;
-    int count;
-    scanf("%d%lf%d",&N,&e,&D);
-    double kongzhi1=0.0,kongzhi2=0.0;
-    for (int i=0; i < N; i++)
+    scanf("%d%lf%d",&n,&e,&d);
+    int c1=0,c2=0;
+    for (int i = 0; i < n; i++)
     {
-        scanf("%d",&n);
-        count=0;
-        for(int j=0;j<n;j++)
+        int k;
+        scanf("%d",&k);
+        double power;
+        int count=0;
+        for(int j=0;j<k;j++)
         {
-            int temp;
-            scanf("%lf",&temp);
-            if(temp<e)
+            scanf("%lf",&power);
+            if(power<e)
             {
                 count++;
             }
         }
-        if(count>n/2&&n<=D) kongzhi1++;
-        if(count>n/2&&n>D)  kongzhi2++;
+        if(count>k/2.0)
+        {
+            if(k>d) c1++;
+            else c2++;
+        }
     }
-    double rate1=kongzhi2/N*100;
-    double rate2=kongzhi1/N*100;
-    printf("%.1lf",rate1);
-    cout << "% ";
-    printf("%.1lf",rate2);
-    cout<< "%";
+    printf("%.1lf%% %.1lf%%",c2*1.0/n*100,c1*1.0/n*100);
 }
